@@ -51,3 +51,8 @@ RUN           bash /tmp/build.sh
 EXPOSE 8080
 
 ENV PYTHONPATH $PYTHONPATH:/var/app
+
+# ONBUILD has no inheritance so we need to add them here again for the child builds to
+# add the actual python (e.g. Django) project
+ONBUILD    ADD . /var/app
+ONBUILD    RUN if [ -f /var/app/requirements.txt ]; then /var/app/bin/pip install -r /var/app/requirements.txt; fi

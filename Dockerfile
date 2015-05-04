@@ -51,4 +51,3 @@ RUN           bash /tmp/build.sh
 EXPOSE 8080
 
 ENV PYTHONPATH $PYTHONPATH:/var/app
-ENV DJANGO_SETTINGS_MODULE=settings.production
